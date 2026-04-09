@@ -1,0 +1,12 @@
+{
+  "name": "ai-companion-root",
+  "version": "1.0.0",
+  "description": "Root proxy for Render deployment",
+  "main": "server/server.js",
+  "scripts": {
+    "install-server": "cd server && npm install",
+    "build": "npm run install-server",
+    "start": "node server/server.js"
+  },
+  "dependencies": {}
+}
