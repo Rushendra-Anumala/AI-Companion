@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 function Notifications({ aiName }) {
@@ -14,7 +14,7 @@ function Notifications({ aiName }) {
     return false;
   };
 
-  const fetchMockNotifications = async () => {
+  const fetchMockNotifications = useCallback(async () => {
     setLoading(true);
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/notifications/generate`, { aiName });
@@ -25,7 +25,7 @@ function Notifications({ aiName }) {
       console.error(error);
     }
     setLoading(false);
-  };
+  }, [aiName]);
 
   useEffect(() => {
     if (!loadLocalNotifications()) {
@@ -35,7 +35,7 @@ function Notifications({ aiName }) {
     const handleUpdate = () => loadLocalNotifications();
     window.addEventListener("notificationsUpdated", handleUpdate);
     return () => window.removeEventListener("notificationsUpdated", handleUpdate);
-  }, [aiName]);
+  }, [fetchMockNotifications]);
 
   return (
     <div style={{ padding: 20 }}>
