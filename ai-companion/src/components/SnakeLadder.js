@@ -170,7 +170,7 @@ function SnakeLadder({ onBack }) {
     if (uResult.event || aResult.event) {
       setRoast("Cooking up a roast...");
       try {
-        const response = await axios.post("http://localhost:5000/game/move", {
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/game/move`, {
           gameType: 'snakes',
           boardState: { 
             userRoll: uRoll, aiRoll: aRoll, 

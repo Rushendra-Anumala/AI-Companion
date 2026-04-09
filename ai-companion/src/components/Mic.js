@@ -34,7 +34,7 @@ function Mic({ userName, aiName, setView }) {
       recognition.stop();
       
       try {
-        const response = await axios.post("http://localhost:5000/command", {
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/command`, {
           command: transcript,
           userName,
           aiName,

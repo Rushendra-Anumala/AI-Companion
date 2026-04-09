@@ -17,7 +17,7 @@ function Notifications({ aiName }) {
   const fetchMockNotifications = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/notifications/generate", { aiName });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/notifications/generate`, { aiName });
       const newNotifs = response.data.notifications || [];
       setNotifications(newNotifs);
       localStorage.setItem("mockNotifications", JSON.stringify(newNotifs));

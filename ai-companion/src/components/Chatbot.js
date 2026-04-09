@@ -40,7 +40,7 @@ function Chatbot({ userName, aiName }) {
 
     try {
       const calendarData = JSON.parse(localStorage.getItem("calendarTasks") || "[]");
-      const response = await axios.post("http://localhost:5000/chat", {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/chat`, {
         message: input,
         userName,
         aiName,

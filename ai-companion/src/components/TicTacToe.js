@@ -29,7 +29,7 @@ function TicTacToe({ onBack }) {
     setLoading(true);
     setRoast("Thinking...");
     try {
-      const response = await axios.post("http://localhost:5000/game/move", {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/game/move`, {
         gameType: 'tictactoe',
         boardState: newBoard,
         aiName: localStorage.getItem("aiName") || "AI",
